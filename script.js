@@ -11,12 +11,17 @@ function createPlayer(name, symbol) {
 }
 
 const gameController = (() => {
-
     const p1 = createPlayer("player1", "x");
     const p2 = createPlayer("player2", "o");
+    let currentPlayer;
 
-    const playersArray = [p1, p2];
+    function pickRandomPlayer(player1, player2) {
+        const randNum = Math.round(Math.random());
+        console.log(randNum);
+        if(randNum == 0) currentPlayer = player1;
+        else currentPlayer = player2;
+    }
 
-    console.log(gameboard.gameboardArray);
-    console.log(playersArray);
+    pickRandomPlayer(p1, p2);
+    console.log(currentPlayer);
 })()
