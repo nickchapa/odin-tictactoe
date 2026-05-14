@@ -5,12 +5,12 @@ const gameboard = (() => {
     return {gameboardArray};
 })()
 
-function createPlayer(name, symbol) {
-
-    return {name, symbol}
-}
-
 const gameController = (() => {
+    function createPlayer(name, symbol) {
+
+        return {name, symbol}
+    }
+    
     const p1 = createPlayer("player1", "x");
     const p2 = createPlayer("player2", "o");
     let currentPlayer;
