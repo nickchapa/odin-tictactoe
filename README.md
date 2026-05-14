@@ -7,3 +7,6 @@ The Odin Project - Tic Tac Toe
 - Everything should be included in gameController, gameboard, and player objects
 
 Not sure if I should just include Player constructor within gameController object.
+
+What I've Learned
+- 2D arrays are accessed like: array[0][0]
