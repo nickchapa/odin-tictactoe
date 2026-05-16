@@ -39,6 +39,14 @@ const gameController = (() => {
     function round(player){
         const userInput = prompt("type index to put symbol");
         if(userInput == '1A') gameboard.array[0][0] = player.symbol;
+        else if (userInput == '1B') gameboard.array[0][1] = player.symbol;
+        else if (userInput == '1C') gameboard.array[0][2] = player.symbol;
+        else if (userInput == '2A') gameboard.array[1][0] = player.symbol;
+        else if (userInput == '2B') gameboard.array[1][1] = player.symbol;
+        else if (userInput == '2C') gameboard.array[1][2] = player.symbol;
+        else if (userInput == '3A') gameboard.array[2][0] = player.symbol;
+        else if (userInput == '3B') gameboard.array[2][1] = player.symbol;
+        else if (userInput == '3C') gameboard.array[2][2] = player.symbol;
         console.log(player.symbol);
         if(player.name == 'player1') currentPlayer = p2;
         else currentPlayer = p1;
