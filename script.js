@@ -1,8 +1,8 @@
 const gameboard = (() => {
     const array = [
-        ['1A', '1B', '1C'],
-        ['2A', '2B', '2C'],
-        ['3A', '3B', '3C']
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
     ];
     const randVar = 42;
 
@@ -10,6 +10,8 @@ const gameboard = (() => {
 })()
 
 const gameController = (() => {
+    let isGameOver = false;
+
     function createPlayer(name, symbol) {
 
         return {name, symbol}
@@ -38,22 +40,32 @@ const gameController = (() => {
     // check for endgame conditions: tie or winner
     function round(player){
         const userInput = prompt("type index to put symbol");
-        if(userInput == '1A') gameboard.array[0][0] = player.symbol;
-        else if (userInput == '1B') gameboard.array[0][1] = player.symbol;
-        else if (userInput == '1C') gameboard.array[0][2] = player.symbol;
-        else if (userInput == '2A') gameboard.array[1][0] = player.symbol;
-        else if (userInput == '2B') gameboard.array[1][1] = player.symbol;
-        else if (userInput == '2C') gameboard.array[1][2] = player.symbol;
-        else if (userInput == '3A') gameboard.array[2][0] = player.symbol;
-        else if (userInput == '3B') gameboard.array[2][1] = player.symbol;
-        else if (userInput == '3C') gameboard.array[2][2] = player.symbol;
+
+        if(userInput == '1A'  || userInput == '0' && gameboard.array[0][0] == null) gameboard.array[0][0] = player.symbol;
+        else if (userInput == '1B' || userInput == '1' && gameboard.array[0][1] == null) gameboard.array[0][1] = player.symbol;
+        else if (userInput == '1C' || userInput == '2' && gameboard.array[0][2] == null) gameboard.array[0][2] = player.symbol;
+        else if (userInput == '2A' || userInput == '3' && gameboard.array[1][0] == null) gameboard.array[1][0] = player.symbol;
+        else if (userInput == '2B' || userInput == '4' && gameboard.array[1][1] == null) gameboard.array[1][1] = player.symbol;
+        else if (userInput == '2C' || userInput == '5' && gameboard.array[1][2] == null) gameboard.array[1][2] = player.symbol;
+        else if (userInput == '3A' || userInput == '6' && gameboard.array[2][0] == null) gameboard.array[2][0] = player.symbol;
+        else if (userInput == '3B' || userInput == '7' && gameboard.array[2][1] == null) gameboard.array[2][1] = player.symbol;
+        else if (userInput == '3C' || userInput == '8' && gameboard.array[2][2] == null) gameboard.array[2][2] = player.symbol;
         console.log(player.symbol);
         if(player.name == 'player1') currentPlayer = p2;
         else currentPlayer = p1;
+
+        if (userInput == 'end') isGameOver = true;
+        if (userInput == null) isGameOver = true;
     }
 
-    round(currentPlayer);
-    console.log(gameboard.array);
-    round(currentPlayer);
-    console.log(gameboard.array);
+    while(!isGameOver){
+
+        round(currentPlayer)
+
+        if (!gameboard.array[0].includes(null) &&
+        !gameboard.array[1].includes(null) &&
+        !gameboard.array[2].includes(null)
+        ) isGameOver = true;
+
+    } 
 })()
