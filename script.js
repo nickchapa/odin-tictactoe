@@ -68,4 +68,11 @@ const gameController = (() => {
         ) isGameOver = true;
 
     } 
+})
+
+const gameDisplay = (() => {
+    const startBtn = document.querySelector('#start-btn');
+    startBtn.addEventListener("click", () => {
+        gameController();
+    })
 })()
