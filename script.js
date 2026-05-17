@@ -56,6 +56,8 @@ const gameController = (() => {
 
         if (userInput == 'end') isGameOver = true;
         if (userInput == null) isGameOver = true;
+
+        gameDisplay.displayCurrentPlayer(currentPlayer);
     }
 
     while(!isGameOver){
@@ -71,8 +73,18 @@ const gameController = (() => {
 })
 
 const gameDisplay = (() => {
+    const body = document.querySelector('body');
     const startBtn = document.querySelector('#start-btn');
+    const currentPlayerDisplay = document.createElement('div');
+    body.append(currentPlayerDisplay);
+
     startBtn.addEventListener("click", () => {
         gameController();
     })
+
+    const displayCurrentPlayer = (currentPlayer) => {
+        currentPlayerDisplay.textContent = currentPlayer.name;
+    }
+
+    return {displayCurrentPlayer};
 })()
