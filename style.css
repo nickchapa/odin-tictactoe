@@ -1,3 +1,10 @@
-p {
-    color: pink;
+#gameboard {
+    width: 50vw;
+    border: solid 2px red;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cell {
+    border: solid 2px pink;
 }
