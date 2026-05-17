@@ -91,6 +91,12 @@ const gameDisplay = (() => {
         gameController();
     })
 
+    for(i = 0; i < cellNodeList.length; i++){
+        cellNodeList[i].addEventListener('click', (e) => {
+        console.log(e.target.getAttribute('id'));
+    })
+    }
+
     const displayCurrentPlayer = (currentPlayer) => {
         currentPlayerDisplay.textContent = currentPlayer.name;
     }
