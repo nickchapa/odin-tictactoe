@@ -58,6 +58,12 @@ const gameController = (() => {
         if (userInput == null) isGameOver = true;
 
         gameDisplay.displayCurrentPlayer(currentPlayer);
+
+        for(i = 0; i < gameDisplay.cellNodeList.length; i++){
+            if(userInput == gameDisplay.cellNodeList[i].getAttribute('id')){
+                gameDisplay.cellNodeList[i].style.backgroundColor = 'blue';
+            }
+        }
     }
 
     while(!isGameOver){
@@ -76,6 +82,9 @@ const gameDisplay = (() => {
     const body = document.querySelector('body');
     const startBtn = document.querySelector('#start-btn');
     const currentPlayerDisplay = document.createElement('div');
+
+    const cellNodeList = document.querySelectorAll('.cell');
+
     body.append(currentPlayerDisplay);
 
     startBtn.addEventListener("click", () => {
@@ -86,5 +95,5 @@ const gameDisplay = (() => {
         currentPlayerDisplay.textContent = currentPlayer.name;
     }
 
-    return {displayCurrentPlayer};
+    return {displayCurrentPlayer, cellNodeList};
 })()
