@@ -25,7 +25,10 @@ const gameController = (() => {
         else currentPlayer = player2;
     }
 
-    pickRandomPlayer(p1, p2);
+    const getCurrentPlayer = () => currentPlayer;
+    const startGame = () => {
+        pickRandomPlayer(p1, p2);
+    }
 
     // round logic:
     // take player input
@@ -37,9 +40,12 @@ const gameController = (() => {
     function round(userInput){
         console.log(userInput);
     }
+
+    return {startGame, getCurrentPlayer}
 })
 
 const gameDisplay = (() => {
+    const game = gameController();
     const startBtn = document.querySelector('#start-btn');
     const cellNodeList = document.querySelectorAll('.cell');
 
@@ -48,6 +54,11 @@ const gameDisplay = (() => {
         // choose random player
         // displays player
         // doesn't start round. round is called when cell clicked
+
+        game.startGame();
+        const currentPlayer = game.getCurrentPlayer();
+        console.log(currentPlayer.name);
+        console.log(currentPlayer.symbol);
     })
 
     for(i = 0; i < cellNodeList.length; i++){
