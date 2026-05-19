@@ -81,9 +81,14 @@ const gameDisplay = (() => {
 
     function clickEventHandler(e){
         // update display
+        console.log(e.target);
+        console.log(game.getCurrentPlayer());
 
         // call playRound(userInput);
         // pass in e.target for userInput, playRound will use userInput to run game logic
         // then update the display with new data from gameController
     }
+
+    boardDiv.addEventListener('click', clickEventHandler);
+
 })()
