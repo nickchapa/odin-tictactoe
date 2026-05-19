@@ -37,11 +37,12 @@ const gameController = (() => {
     // reflect in display
     // check for endgame conditions: tie or winner
     
-    function round(userInput){
+    const round = (userInput) => {
         console.log(userInput);
+        // run round logic
     }
 
-    return {startGame, getCurrentPlayer}
+    return {startGame, getCurrentPlayer, round}
 })
 
 const gameDisplay = (() => {
@@ -61,14 +62,17 @@ const gameDisplay = (() => {
         console.log(currentPlayer.symbol);
     })
 
-    for(i = 0; i < cellNodeList.length; i++){
-        cellNodeList[i].addEventListener('click', (e) => {
-            clickedCell = e.target.getAttribute('id');
-            console.log(clickedCell);
+    function clickEventHandler(e){
+        const cell = e.target.getAttribute('id');
+        game.round(cell);
+        // update display
 
-            // call playRound(userInput);
-            // pass in e.target for userInput, playRound will use userInput to run game logic
-            // then update the display with new data from gameController
-        })
+        // call playRound(userInput);
+        // pass in e.target for userInput, playRound will use userInput to run game logic
+        // then update the display with new data from gameController
+    }
+
+    for(i = 0; i < cellNodeList.length; i++){
+        cellNodeList[i].addEventListener('click', clickEventHandler);
     }
 })()
