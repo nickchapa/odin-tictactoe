@@ -56,6 +56,19 @@ const gameDisplay = (() => {
     const game = gameController();
     const startBtn = document.querySelector('#start-btn');
     const cellNodeList = document.querySelectorAll('.cell');
+    const boardDiv = document.querySelector('#gameboard');
+
+    ticTacToeBoard = game.getBoard();
+    console.log(ticTacToeBoard);
+    ticTacToeBoard.forEach((element) => {
+        element.forEach((cell, index) => {
+            if(cell === null) cell = 'null';
+            else cell = '1';
+            const cellButton = document.createElement('button');
+            cellButton.textContent = cell;
+            boardDiv.append(cellButton);
+        })
+    });    
 
     startBtn.addEventListener("click", () => {
         // run startGame function:
