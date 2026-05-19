@@ -1,15 +1,17 @@
 const gameboard = (() => {
-    const array = [
+    const board = [
         [null, null, null],
         [null, null, null],
         [null, null, null]
     ];
-    const randVar = 42;
 
-    return {array};
+    const getBoard = () => board;
+
+    return {getBoard};
 })()
 
 const gameController = (() => {
+    const board = gameboard;
     function createPlayer(name, symbol) {
 
         return {name, symbol}
@@ -42,7 +44,12 @@ const gameController = (() => {
         // run round logic
     }
 
-    return {startGame, getCurrentPlayer, round}
+    return {
+        startGame,
+        getCurrentPlayer,
+        round,
+        getBoard: board.getBoard
+    }
 })
 
 const gameDisplay = (() => {
