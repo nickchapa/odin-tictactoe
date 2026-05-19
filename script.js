@@ -81,8 +81,12 @@ const gameDisplay = (() => {
 
     function clickEventHandler(e){
         // update display
-        console.log(e.target);
         console.log(game.getCurrentPlayer());
+        const currentPlayer = game.getCurrentPlayer();
+        console.log(currentPlayer);
+
+        // set button's textcontent to player symbol
+        e.target.textContent = currentPlayer.symbol;
 
         // call playRound(userInput);
         // pass in e.target for userInput, playRound will use userInput to run game logic
