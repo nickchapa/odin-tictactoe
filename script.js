@@ -80,17 +80,16 @@ const gameDisplay = (() => {
     })
 
     function clickEventHandler(e){
+        const btnClicked = e.target;
         // update display
         console.log(game.getCurrentPlayer());
         const currentPlayer = game.getCurrentPlayer();
         console.log(currentPlayer);
 
-        // set button's textcontent to player symbol
-        e.target.textContent = currentPlayer.symbol;
-
         // call playRound(userInput);
         // pass in e.target for userInput, playRound will use userInput to run game logic
         // then update the display with new data from gameController
+        game.round(btnClicked);
     }
 
     boardDiv.addEventListener('click', clickEventHandler);
