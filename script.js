@@ -62,13 +62,11 @@ const gameDisplay = (() => {
     console.log(ticTacToeBoard);
     ticTacToeBoard.forEach((row, rowIndex) => {
         row.forEach((cell, columnIndex) => {
-            // if(cell === null) cell = 'null';
-            // else cell = '1';
-
+            // move this logic to gameboard object
             cell = rowIndex + '-' + columnIndex;
-            console.log(cell);
 
             const cellButton = document.createElement('button');
+            cellButton.dataset.cellIndex = cell;
             cellButton.textContent = cell;
             boardDiv.append(cellButton);
         })
