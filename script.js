@@ -45,7 +45,8 @@ const gameController = (() => {
     // check for endgame conditions: tie or winner
     
     const round = (row, column) => {
-        console.log(`row: ${row}, column: ${column}`);
+        const boardArr = board.getBoard();
+        boardArr[row][column] = currentPlayer.symbol;
     }
 
     return {
