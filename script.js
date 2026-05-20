@@ -52,10 +52,16 @@ const gameController = (() => {
     // store in gameboard array
     // reflect in display
     // check for endgame conditions: tie or winner
+
+    function switchPlayer(player){
+        if(player.symbol == 'x') currentPlayer = p2;
+        else currentPlayer = p1;
+    }
     
     const round = (row, column) => {
         const boardArr = board.getBoard();
         boardArr[row][column] = currentPlayer.symbol;
+        switchPlayer(currentPlayer);
     }
 
     return {
