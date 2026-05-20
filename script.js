@@ -1,18 +1,26 @@
 const gameboard = (() => {
-    const board =[];
-    const rows = 3;
-    const columns = 3;
+    let board = []
 
-    for(i = 0; i < rows; i++){
-        board.push([]);
-        for(j = 0; j < columns; j++){
-            board[i].push(i + '-' + j);
+    const newBoard = () => {
+        const newBoard = [];
+        const rows = 3;
+        const columns = 3;
+
+        for(i = 0; i < rows; i++){
+            newBoard.push([]);
+            for(j = 0; j < columns; j++){
+                newBoard[i].push(i + '-' + j);
+            }
         }
+
+        board = newBoard;
+
+        return board;
     }
 
     const getBoard = () => board;
 
-    return {getBoard};
+    return {newBoard, getBoard};
 })()
 
 const gameController = (() => {
@@ -34,6 +42,7 @@ const gameController = (() => {
 
     const getCurrentPlayer = () => currentPlayer;
     const startGame = () => {
+        board.newBoard();
         pickRandomPlayer(p1, p2);
     }
 
@@ -66,7 +75,6 @@ const gameDisplay = (() => {
 
     function displayBoard(){
         ticTacToeBoard = game.getBoard();
-        console.log(ticTacToeBoard);
         ticTacToeBoard.forEach((row, rowIndex) => {
             row.forEach((cell, columnIndex) => {
                 const cellButton = document.createElement('button');
