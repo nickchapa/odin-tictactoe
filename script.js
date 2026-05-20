@@ -1,9 +1,14 @@
 const gameboard = (() => {
-    const board = [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null]
-    ];
+    const board =[];
+    const rows = 3;
+    const columns = 3;
+
+    for(i = 0; i < rows; i++){
+        board.push([]);
+        for(j = 0; j < columns; j++){
+            board[i].push(i + '-' + j);
+        }
+    }
 
     const getBoard = () => board;
 
