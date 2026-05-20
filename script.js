@@ -60,10 +60,14 @@ const gameDisplay = (() => {
 
     ticTacToeBoard = game.getBoard();
     console.log(ticTacToeBoard);
-    ticTacToeBoard.forEach((element) => {
-        element.forEach((cell, index) => {
-            if(cell === null) cell = 'null';
-            else cell = '1';
+    ticTacToeBoard.forEach((row, rowIndex) => {
+        row.forEach((cell, columnIndex) => {
+            // if(cell === null) cell = 'null';
+            // else cell = '1';
+
+            cell = rowIndex + '-' + columnIndex;
+            console.log(cell);
+
             const cellButton = document.createElement('button');
             cellButton.textContent = cell;
             boardDiv.append(cellButton);
