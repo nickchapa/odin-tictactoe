@@ -67,9 +67,6 @@ const gameDisplay = (() => {
     console.log(ticTacToeBoard);
     ticTacToeBoard.forEach((row, rowIndex) => {
         row.forEach((cell, columnIndex) => {
-            // move this logic to gameboard object
-            cell = rowIndex + '-' + columnIndex;
-
             const cellButton = document.createElement('button');
             cellButton.dataset.cellIndex = cell;
             cellButton.textContent = cell;
