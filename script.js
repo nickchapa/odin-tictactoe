@@ -44,9 +44,8 @@ const gameController = (() => {
     // reflect in display
     // check for endgame conditions: tie or winner
     
-    const round = (userInput) => {
-        console.log(userInput);
-        // run round logic
+    const round = (row, column) => {
+        console.log(`row: ${row}, column: ${column}`);
     }
 
     return {
@@ -68,7 +67,8 @@ const gameDisplay = (() => {
     ticTacToeBoard.forEach((row, rowIndex) => {
         row.forEach((cell, columnIndex) => {
             const cellButton = document.createElement('button');
-            cellButton.dataset.cellIndex = cell;
+            cellButton.dataset.row = rowIndex;
+            cellButton.dataset.column = columnIndex;
             cellButton.textContent = cell;
             boardDiv.append(cellButton);
         })
@@ -85,12 +85,14 @@ const gameDisplay = (() => {
 
     function clickEventHandler(e){
         const btnClicked = e.target;
+        const cellRow = btnClicked.dataset.row;
+        const cellColumn = btnClicked.dataset.column;
         // update display
 
         // call playRound(userInput);
         // pass in e.target for userInput, playRound will use userInput to run game logic
         // then update the display with new data from gameController
-        game.round(btnClicked);
+        game.round(cellRow, cellColumn);
     }
 
     boardDiv.addEventListener('click', clickEventHandler);
