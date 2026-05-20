@@ -63,37 +63,44 @@ const gameDisplay = (() => {
     const cellNodeList = document.querySelectorAll('.cell');
     const boardDiv = document.querySelector('#gameboard');
 
-    ticTacToeBoard = game.getBoard();
-    console.log(ticTacToeBoard);
-    ticTacToeBoard.forEach((row, rowIndex) => {
-        row.forEach((cell, columnIndex) => {
-            const cellButton = document.createElement('button');
-            cellButton.dataset.row = rowIndex;
-            cellButton.dataset.column = columnIndex;
-            cellButton.textContent = cell;
-            boardDiv.append(cellButton);
-        })
-    });    
+
+    function displayBoard(){
+        ticTacToeBoard = game.getBoard();
+        console.log(ticTacToeBoard);
+        ticTacToeBoard.forEach((row, rowIndex) => {
+            row.forEach((cell, columnIndex) => {
+                const cellButton = document.createElement('button');
+                cellButton.dataset.row = rowIndex;
+                cellButton.dataset.column = columnIndex;
+                cellButton.textContent = cell;
+                boardDiv.append(cellButton);
+            })
+        });  
+    }
+      
 
     startBtn.addEventListener("click", () => {
         // run startGame function:
         // choose random player
         // displays player
         // doesn't start round. round is called when cell clicked
-
+        boardDiv.textContent = '';
         game.startGame();
+        displayBoard();
     })
 
     function clickEventHandler(e){
         const btnClicked = e.target;
         const cellRow = btnClicked.dataset.row;
         const cellColumn = btnClicked.dataset.column;
+        boardDiv.textContent = '';
         // update display
 
         // call playRound(userInput);
         // pass in e.target for userInput, playRound will use userInput to run game logic
         // then update the display with new data from gameController
         game.round(cellRow, cellColumn);
+        displayBoard();
     }
 
     boardDiv.addEventListener('click', clickEventHandler);
