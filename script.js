@@ -84,7 +84,8 @@ const gameDisplay = (() => {
                 const cellButton = document.createElement('button');
                 cellButton.dataset.row = rowIndex;
                 cellButton.dataset.column = columnIndex;
-                cellButton.textContent = cell;
+                if(cell === null) cellButton.textContent = '-';
+                else cellButton.textContent = cell;
                 boardDiv.append(cellButton);
             })
         });  
