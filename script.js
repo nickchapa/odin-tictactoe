@@ -1,5 +1,5 @@
 const gameboard = (() => {
-    let board = []
+    let board = [];
 
     const newBoard = () => {
         board = [];
@@ -78,7 +78,7 @@ const gameDisplay = (() => {
 
 
     function displayBoard(){
-        ticTacToeBoard = game.getBoard();
+        const ticTacToeBoard = game.getBoard();
         ticTacToeBoard.forEach((row, rowIndex) => {
             row.forEach((cell, columnIndex) => {
                 const cellButton = document.createElement('button');
