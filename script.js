@@ -9,10 +9,9 @@ const gameboard = (() => {
         for(i = 0; i < rows; i++){
             board.push([]);
             for(j = 0; j < columns; j++){
-                board[i].push(i + '-' + j);
+                board[i].push(null);
             }
         }
-
         return board;
     }
 
