@@ -57,6 +57,7 @@ const gameController = (() => {
     
     const round = (row, column) => {
         const boardArr = board.getBoard();
+        if(boardArr[row][column]) return;
         boardArr[row][column] = currentPlayer.symbol;
         switchPlayer(currentPlayer);
     }
