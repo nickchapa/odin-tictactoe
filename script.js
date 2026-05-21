@@ -2,18 +2,16 @@ const gameboard = (() => {
     let board = []
 
     const newBoard = () => {
-        const newBoard = [];
+        board = [];
         const rows = 3;
         const columns = 3;
 
         for(i = 0; i < rows; i++){
-            newBoard.push([]);
+            board.push([]);
             for(j = 0; j < columns; j++){
-                newBoard[i].push(i + '-' + j);
+                board[i].push(i + '-' + j);
             }
         }
-
-        board = newBoard;
 
         return board;
     }
