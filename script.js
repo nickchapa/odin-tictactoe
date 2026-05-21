@@ -102,15 +102,12 @@ const gameDisplay = (() => {
     })
 
     function clickEventHandler(e){
+        if(game.getBoard().length == []) return;
         const btnClicked = e.target;
         const cellRow = btnClicked.dataset.row;
         const cellColumn = btnClicked.dataset.column;
         boardDiv.textContent = '';
-        // update display
 
-        // call playRound(userInput);
-        // pass in e.target for userInput, playRound will use userInput to run game logic
-        // then update the display with new data from gameController
         game.round(cellRow, cellColumn);
         displayBoard();
     }
