@@ -75,7 +75,7 @@ const gameDisplay = (() => {
     const startBtn = document.querySelector('#start-btn');
     const cellNodeList = document.querySelectorAll('.cell');
     const boardDiv = document.querySelector('#gameboard');
-
+    const currentPlayerDiv = document.createElement('div');
 
     function displayBoard(){
         const ticTacToeBoard = game.getBoard();
@@ -90,7 +90,12 @@ const gameDisplay = (() => {
             })
         });  
     }
-      
+
+    function displayCurrentPlayer(){
+        const currentPlayer = game.getCurrentPlayer();
+        currentPlayerDiv.textContent = currentPlayer.name + ' ' + currentPlayer.symbol;
+        startBtn.after(currentPlayerDiv);
+    }
 
     startBtn.addEventListener("click", () => {
         // run startGame function:
@@ -100,6 +105,7 @@ const gameDisplay = (() => {
         boardDiv.textContent = '';
         game.startGame();
         displayBoard();
+        displayCurrentPlayer();
     })
 
     function clickEventHandler(e){
@@ -111,6 +117,7 @@ const gameDisplay = (() => {
 
         game.round(cellRow, cellColumn);
         displayBoard();
+        displayCurrentPlayer();
     }
 
     boardDiv.addEventListener('click', clickEventHandler);
