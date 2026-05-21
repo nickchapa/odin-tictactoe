@@ -3,5 +3,5 @@
     height: 50vw;
     border: solid 2px red;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
 }
