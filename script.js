@@ -42,12 +42,6 @@ const gameController = (() => {
         board.newBoard();
         pickRandomPlayer(p1, p2);
     }
-
-    // round logic:
-    // take player input
-    // check if valid
-    // store in gameboard array
-    // reflect in display
     // check for endgame conditions: tie or winner
 
     function switchPlayer(player){
@@ -98,10 +92,6 @@ const gameDisplay = (() => {
     }
 
     startBtn.addEventListener("click", () => {
-        // run startGame function:
-        // choose random player
-        // displays player
-        // doesn't start round. round is called when cell clicked
         boardDiv.textContent = '';
         game.startGame();
         displayBoard();
