@@ -80,17 +80,16 @@ const gameDisplay = (() => {
     const currentPlayerDiv = document.createElement('div');
 
     function displayBoard(){
-        const ticTacToeBoard = game.getBoard();
-        ticTacToeBoard.forEach((row, rowIndex) => {
-            row.forEach((cell, columnIndex) => {
-                const cellButton = document.createElement('button');
-                cellButton.dataset.row = rowIndex;
-                cellButton.dataset.column = columnIndex;
-                if(cell === null) cellButton.textContent = '-';
-                else cellButton.textContent = cell;
-                boardDiv.append(cellButton);
-            })
-        });  
+        const createDisplayCells = (rowIndex, columnIndex, cell) => {
+            const cellButton = document.createElement('button');
+            cellButton.dataset.row = rowIndex;
+            cellButton.dataset.column = columnIndex;
+            if(cell === null) cellButton.textContent = '-';
+            else cellButton.textContent = cell;
+            boardDiv.append(cellButton);
+        }
+
+        gameboard.loopThroughBoard(createDisplayCells);
     }
 
     function displayCurrentPlayer(){
