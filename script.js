@@ -17,7 +17,15 @@ const gameboard = (() => {
 
     const getBoard = () => board;
 
-    return {newBoard, getBoard};
+    const loopThroughBoard = (callback) => {
+        board.forEach((row, rowIndex) => {
+            row.forEach((cell, columnIndex) => {
+                callback(rowIndex, columnIndex, cell);
+            })
+        });  
+    }
+
+    return {newBoard, getBoard, loopThroughBoard};
 })()
 
 const gameController = (() => {
