@@ -30,6 +30,7 @@ const gameboard = (() => {
 
 const gameController = (() => {
     const board = gameboard;
+    let isTie = false;
     function createPlayer(name, symbol) {
 
         return {name, symbol}
@@ -51,6 +52,19 @@ const gameController = (() => {
         pickRandomPlayer(p1, p2);
     }
     // check for endgame conditions: tie or winner
+    function checkForGameOver(){
+        // tie if board full
+        // if array does not include null, board is full
+        // return tie condition
+        function checkForNull(rowIndex, columnIndex, cell){
+            console.log('running checkfornull');
+            if(cell === null) isTie = false;
+            else isTie = true;
+        }
+
+        board.loopThroughBoard(checkForNull);
+        // winner if one player has 3 in a row
+    }
 
     function switchPlayer(player){
         if(player.symbol == 'x') currentPlayer = p2;
@@ -62,6 +76,8 @@ const gameController = (() => {
         if(boardArr[row][column]) return;
         boardArr[row][column] = currentPlayer.symbol;
         switchPlayer(currentPlayer);
+        checkForGameOver();
+        console.log(isTie);
     }
 
     return {
