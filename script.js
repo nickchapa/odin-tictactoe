@@ -92,11 +92,14 @@ const gameController = (() => {
         console.log(isTie);
     }
 
+    const getIsTie = () => isTie;
+
     return {
         startGame,
         getCurrentPlayer,
         round,
-        getBoard: board.getBoard
+        getBoard: board.getBoard,
+        getIsTie,
     }
 })
 
