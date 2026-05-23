@@ -50,20 +50,33 @@ const gameController = (() => {
     const startGame = () => {
         board.newBoard();
         pickRandomPlayer(p1, p2);
+        isTie = false;
     }
     // check for endgame conditions: tie or winner
     function checkForGameOver(){
-        // tie if board full
-        // if array does not include null, board is full
-        // return tie condition
-        function checkForNull(rowIndex, columnIndex, cell){
-            console.log('running checkfornull');
-            if(cell === null) isTie = false;
-            else isTie = true;
+        const gameboardArr = board.getBoard();
+
+        // check for winner
+        // then check for tie
+
+        // function checkForWinner
+        // if winner found:
+        // set winner variable to winning player object
+        // return (exit function)
+
+        function checkForTie(){
+            for(i = 0; i < gameboardArr.length; i++){
+                console.log(gameboardArr[i]);
+                for(j = 0; j < gameboardArr[i].length; j++){
+                    if(gameboardArr[i][j] === null) return;
+                }
+            }
+            console.log('no null found, game tied');
+            isTie = true;
         }
 
-        board.loopThroughBoard(checkForNull);
-        // winner if one player has 3 in a row
+        // checkForWinner();
+        checkForTie();
     }
 
     function switchPlayer(player){
