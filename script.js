@@ -129,6 +129,20 @@ const gameDisplay = (() => {
         startBtn.after(currentPlayerDiv);
     }
 
+    function displayGameOver(){
+        // create div that displays result
+        // if Winner
+
+        // if Tie
+        if(game.getIsTie()){
+            console.log('game tied');
+            const body = document.querySelector('body');
+            const resultDiv = document.createElement('div');
+            resultDiv.textContent = 'game tied';
+            body.append(resultDiv);
+        }
+    }
+
     startBtn.addEventListener("click", () => {
         boardDiv.textContent = '';
         game.startGame();
@@ -146,6 +160,7 @@ const gameDisplay = (() => {
         game.round(cellRow, cellColumn);
         displayBoard();
         displayCurrentPlayer();
+        displayGameOver();
     }
 
     boardDiv.addEventListener('click', clickEventHandler);
