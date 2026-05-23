@@ -66,7 +66,6 @@ const gameController = (() => {
 
         function checkForTie(){
             for(i = 0; i < gameboardArr.length; i++){
-                console.log(gameboardArr[i]);
                 for(j = 0; j < gameboardArr[i].length; j++){
                     if(gameboardArr[i][j] === null) return;
                 }
