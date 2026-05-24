@@ -74,9 +74,6 @@ const gameController = (() => {
                         if(row[0] == p1.symbol) console.log('p1 wins');
                         else if(row[0] == p2.symbol) console.log('p2 wins');
                     }
-                    for(cell of row){
-                        //console.log(`cell: ${cell}`);
-                    }
                 }
             }
             rowCheck();
