@@ -95,6 +95,8 @@ const gameController = (() => {
                     }
                     if(columnEquality == true){
                         console.log(`three in a row in column ${column}`);
+                        if(prev == p1.symbol) console.log('p1 wins');
+                        else if (prev == p2.symbol) console.log('p2 wins');
                         return;
                     };
 
