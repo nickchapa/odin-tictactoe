@@ -68,7 +68,7 @@ const gameController = (() => {
             // rows
             function rowCheck(){
                 for(row of gameboardArr){
-                    if(row.includes(null)) return;
+                    if(row.includes(null)) continue;
                     if(row[0] == row[1] && row[1] == row[2]){
                         console.log(`found three in a row in row ${row}`);
                         if(row[0] == p1.symbol) console.log('p1 wins');
