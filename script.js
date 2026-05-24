@@ -76,7 +76,21 @@ const gameController = (() => {
                     }
                 }
             }
+
+            function columnCheck(){
+                let prevCell = null;
+                for(row of gameboardArr){
+                    //if(row.includes(null)) return;
+                    const currentCell = row[0];
+                    if(currentCell == null) return;
+                    console.log(`prevCell: ${prevCell}, currentCell: ${currentCell}`);
+                    if(!currentCell == prevCell) return;
+                    prevCell = currentCell;
+                }
+                console.log(`found three in a row in column 0`);
+            }
             rowCheck();
+            columnCheck();
 
             // columns
 
