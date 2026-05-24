@@ -110,6 +110,8 @@ const gameController = (() => {
                     gameboardArr[0][0] == gameboardArr[1][1] &&
                     gameboardArr[1][1] == gameboardArr[2][2]
                 ){
+                    if(gameboardArr[1][1] == p1.symbol) console.log(`p1 wins`);
+                    else console.log(`p2 wins`);
                     console.log(`top-left to bottom-right diagonal win`);
                     return true;
                 }
@@ -117,6 +119,8 @@ const gameController = (() => {
                     gameboardArr[0][2] == gameboardArr[1][1] &&
                     gameboardArr[1][1] == gameboardArr[2][0]
                 ){
+                    if(gameboardArr[1][1] == p1.symbol) console.log(`p1 wins`);
+                    else console.log(`p2 wins`);
                     console.log(`top-right to bottom-left diagonal win`);
                     return true;
                 }
