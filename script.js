@@ -63,6 +63,29 @@ const gameController = (() => {
         // if winner found:
         // set winner variable to winning player object
         // return (exit function)
+        function checkForWinner(){
+            // winning conditions:
+            // rows
+            function rowCheck(){
+                for(row of gameboardArr){
+                    if(!row.includes(null) && row[0] == row[1] && row[1] == row[2]){
+                        console.log(`found three in a row in row ${row}`);
+                        if(row[0] == p1.symbol) console.log('p1 wins');
+                        else if(row[0] == p2.symbol) console.log('p2 wins');
+                    }
+
+                    for(cell of row){
+                        //console.log(`cell: ${cell}`);
+                    }
+                }
+            }
+            rowCheck();
+
+            // columns
+
+            //diagonal
+
+        }
 
         function checkForTie(){
             for(row of gameboardArr){
@@ -74,7 +97,10 @@ const gameController = (() => {
             isTie = true;
         }
 
-        // checkForWinner();
+        // problem: if winner found, need to exit checkForGameOver
+        // otherwise, checkForTie() will run
+        // maybe if checkForWinner returns false, then run checkForTie
+        checkForWinner();
         checkForTie();
     }
 
