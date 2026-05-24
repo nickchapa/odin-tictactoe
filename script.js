@@ -73,6 +73,7 @@ const gameController = (() => {
                         console.log(`found three in a row in row ${row}`);
                         if(row[0] == p1.symbol) console.log('p1 wins');
                         else if(row[0] == p2.symbol) console.log('p2 wins');
+                        return true;
                     }
                 }
             }
@@ -97,7 +98,7 @@ const gameController = (() => {
                         console.log(`three in a row in column ${column}`);
                         if(prev == p1.symbol) console.log('p1 wins');
                         else if (prev == p2.symbol) console.log('p2 wins');
-                        return;
+                        return true;
                     };
 
                     columnEquality = false;
@@ -110,18 +111,20 @@ const gameController = (() => {
                     gameboardArr[1][1] == gameboardArr[2][2]
                 ){
                     console.log(`top-left to bottom-right diagonal win`);
+                    return true;
                 }
                 if(gameboardArr[0][2] != null &&
                     gameboardArr[0][2] == gameboardArr[1][1] &&
                     gameboardArr[1][1] == gameboardArr[2][0]
                 ){
                     console.log(`top-right to bottom-left diagonal win`);
+                    return true;
                 }
             }
 
-            rowCheck();
-            columnCheck();
-            diagonalCheck();
+            if(rowCheck()) return;
+            if(columnCheck()) return;
+            if(diagonalCheck()) return;
 
             // columns
 
