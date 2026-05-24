@@ -78,16 +78,29 @@ const gameController = (() => {
             }
 
             function columnCheck(){
-                let prevCell = null;
-                for(row of gameboardArr){
-                    //if(row.includes(null)) return;
-                    const currentCell = row[0];
-                    if(currentCell == null) return;
-                    console.log(`prevCell: ${prevCell}, currentCell: ${currentCell}`);
-                    if(!currentCell == prevCell) return;
-                    prevCell = currentCell;
+                for(let column = 0; column < gameboardArr[0].length; column++){
+                    let prev = null;
+                    let columnEquality = false;
+
+                    for(row of gameboardArr){
+                        const current = row[column];
+                        if(current == null) {
+                            columnEquality = false;
+                            break;
+                        };
+                        if(current == prev) columnEquality = true;
+
+                        else columnEquality = false;
+                        
+                        prev = current;
+                    }
+                    if(columnEquality == true){
+                        console.log(`three in a row in column ${column}`);
+                        return;
+                    };
+
+                    columnEquality = false;
                 }
-                console.log(`found three in a row in column 0`);
             }
             rowCheck();
             columnCheck();
