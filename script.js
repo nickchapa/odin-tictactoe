@@ -89,7 +89,6 @@ const gameController = (() => {
                             break;
                         };
                         if(current == prev) columnEquality = true;
-
                         else columnEquality = false;
                         
                         prev = current;
