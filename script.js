@@ -103,8 +103,25 @@ const gameController = (() => {
                     columnEquality = false;
                 }
             }
+
+            function diagonalCheck(){
+                if(gameboardArr[0][0] != null &&
+                    gameboardArr[0][0] == gameboardArr[1][1] &&
+                    gameboardArr[1][1] == gameboardArr[2][2]
+                ){
+                    console.log(`top-left to bottom-right diagonal win`);
+                }
+                if(gameboardArr[0][2] != null &&
+                    gameboardArr[0][2] == gameboardArr[1][1] &&
+                    gameboardArr[1][1] == gameboardArr[2][0]
+                ){
+                    console.log(`top-right to bottom-left diagonal win`);
+                }
+            }
+
             rowCheck();
             columnCheck();
+            diagonalCheck();
 
             // columns
 
