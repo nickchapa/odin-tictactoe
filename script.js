@@ -38,7 +38,10 @@ const gameController = (() => {
     
     const p1 = createPlayer("player1", "x");
     const p2 = createPlayer("player2", "o");
+    const playerArr = [p1, p2];
     let currentPlayer;
+
+    const getPlayers = () => playerArr;
 
     function pickRandomPlayer(player1, player2) {
         const randNum = Math.round(Math.random());
@@ -170,6 +173,7 @@ const gameController = (() => {
 
     return {
         startGame,
+        getPlayers,
         getCurrentPlayer,
         round,
         getBoard: board.getBoard,
