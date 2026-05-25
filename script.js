@@ -185,6 +185,7 @@ const gameDisplay = (() => {
     const game = gameController();
     const startBtn = document.querySelector('#start-btn');
     const cellNodeList = document.querySelectorAll('.cell');
+    const gameInfoDiv = document.querySelector('#game-info');
     const boardDiv = document.querySelector('#gameboard');
     const currentPlayerDiv = document.createElement('div');
 
@@ -216,8 +217,8 @@ const gameDisplay = (() => {
         }
         else console.log('currentPlayer is p2');
         
-        startBtn.after(p1Display);
-        p1Display.after(p2Display);
+        gameInfoDiv.append(p1Display);
+        gameInfoDiv.append(p2Display);
     }
 
     function displayCurrentPlayer(){
