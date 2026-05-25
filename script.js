@@ -243,6 +243,7 @@ const gameDisplay = (() => {
     }
 
     startBtn.addEventListener("click", () => {
+        gameInfoDiv.textContent = '';
         boardDiv.textContent = '';
         game.startGame();
         displayBoard();
@@ -255,6 +256,7 @@ const gameDisplay = (() => {
         const btnClicked = e.target;
         const cellRow = btnClicked.dataset.row;
         const cellColumn = btnClicked.dataset.column;
+        gameInfoDiv.textContent = '';
         boardDiv.textContent = '';
 
         game.round(cellRow, cellColumn);
