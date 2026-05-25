@@ -86,7 +86,7 @@ const gameController = (() => {
                     let prev = null;
                     let columnEquality = false;
 
-                    for(row of gameboardArr){
+                    for(let row = 0; row < gameboardArr.length; row++){
                         const current = row[column];
                         if(current == null) {
                             columnEquality = false;
