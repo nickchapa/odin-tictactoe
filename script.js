@@ -164,7 +164,6 @@ const gameController = (() => {
         boardArr[row][column] = currentPlayer.symbol;
         switchPlayer(currentPlayer);
         checkForGameOver();
-        console.log(isTie);
     }
 
     const getIsTie = () => isTie;
