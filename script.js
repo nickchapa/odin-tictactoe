@@ -201,6 +201,19 @@ const gameDisplay = (() => {
         gameboard.loopThroughBoard(createDisplayCells);
     }
 
+    function displayPlayers(){
+        const p1 = game.getPlayers()[0];
+        const p2 = game.getPlayers()[1];
+        const p1Display = document.createElement('p');
+        const p2Display = document.createElement('p');
+
+        p1Display.textContent = `${p1.name}, ${p1.symbol}`;
+        p2Display.textContent = `${p2.name}, ${p2.symbol}`;
+        
+        startBtn.after(p1Display);
+        p1Display.after(p2Display);
+    }
+
     function displayCurrentPlayer(){
         const currentPlayer = game.getCurrentPlayer();
         currentPlayerDiv.textContent = currentPlayer.name + ' ' + currentPlayer.symbol;
@@ -225,6 +238,7 @@ const gameDisplay = (() => {
         boardDiv.textContent = '';
         game.startGame();
         displayBoard();
+        displayPlayers();
         displayCurrentPlayer();
     })
 
