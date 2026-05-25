@@ -204,11 +204,17 @@ const gameDisplay = (() => {
     function displayPlayers(){
         const p1 = game.getPlayers()[0];
         const p2 = game.getPlayers()[1];
+        const currentPlayer = game.getCurrentPlayer();
         const p1Display = document.createElement('p');
         const p2Display = document.createElement('p');
 
         p1Display.textContent = `${p1.name}, ${p1.symbol}`;
         p2Display.textContent = `${p2.name}, ${p2.symbol}`;
+
+        if(currentPlayer == p1){
+            console.log('currentPlayer is p1');
+        }
+        else console.log('currentPlayer is p2');
         
         startBtn.after(p1Display);
         p1Display.after(p2Display);
