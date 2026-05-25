@@ -216,7 +216,8 @@ const gameDisplay = (() => {
 
     function displayCurrentPlayer(){
         const currentPlayer = game.getCurrentPlayer();
-        currentPlayerDiv.textContent = currentPlayer.name + ' ' + currentPlayer.symbol;
+        currentPlayerDiv.textContent = `Current Player: ${currentPlayer.name} ${currentPlayer.symbol}`;
+        //currentPlayer.name + ' ' + currentPlayer.symbol;
         startBtn.after(currentPlayerDiv);
     }
 
