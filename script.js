@@ -252,6 +252,7 @@ const gameDisplay = (() => {
 
         game.round(cellRow, cellColumn);
         displayBoard();
+        displayPlayers();
         displayCurrentPlayer();
         displayGameOver();
     }
