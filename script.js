@@ -87,14 +87,16 @@ const gameController = (() => {
                     let columnEquality = false;
 
                     for(let row = 0; row < gameboardArr.length; row++){
-                        const current = row[column];
+                        const current = gameboardArr[row][column];
                         if(current == null) {
                             columnEquality = false;
                             break;
                         };
-                        if(current == prev) columnEquality = true;
-                        else columnEquality = false;
-                        
+                        if(prev == null || prev == current) columnEquality = true;
+                        else {
+                            columnEquality = false;
+                            break;
+                        }
                         prev = current;
                     }
                     if(columnEquality == true){
