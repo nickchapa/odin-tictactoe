@@ -10,3 +10,4 @@ Not sure if I should just include Player constructor within gameController objec
 
 What I've Learned
 - 2D arrays are accessed like: array[0][0]
+- Use console logs strategically to help visualize logic, especially with loops
