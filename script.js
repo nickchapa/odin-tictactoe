@@ -215,9 +215,9 @@ const gameDisplay = (() => {
         p2Display.textContent = `${p2.name}, ${p2.symbol}`;
 
         if(currentPlayer == p1){
-            console.log('currentPlayer is p1');
+            p1Display.style.color = 'red';
         }
-        else console.log('currentPlayer is p2');
+        else p2Display.style.color = 'red';
         
         gameInfoDiv.append(p1Display);
         gameInfoDiv.append(p2Display);
