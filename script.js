@@ -223,13 +223,6 @@ const gameDisplay = (() => {
         gameInfoDiv.append(p2Display);
     }
 
-    function displayCurrentPlayer(){
-        const currentPlayer = game.getCurrentPlayer();
-        currentPlayerDiv.textContent = `Current Player: ${currentPlayer.name} ${currentPlayer.symbol}`;
-        //currentPlayer.name + ' ' + currentPlayer.symbol;
-        startBtn.after(currentPlayerDiv);
-    }
-
     function displayGameOver(){
         // create div that displays result
         // if Winner
@@ -250,7 +243,6 @@ const gameDisplay = (() => {
         game.startGame();
         displayBoard();
         displayPlayers();
-        displayCurrentPlayer();
     })
 
     function clickEventHandler(e){
@@ -264,7 +256,6 @@ const gameDisplay = (() => {
         game.round(cellRow, cellColumn);
         displayBoard();
         displayPlayers();
-        displayCurrentPlayer();
         displayGameOver();
     }
 
