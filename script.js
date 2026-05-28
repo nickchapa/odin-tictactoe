@@ -229,6 +229,7 @@ const gameDisplay = (() => {
     function displayGameOver(){
         // create div that displays result
         // if Winner
+        if(game.getWinner()) console.log(game.getWinner().name);
 
         // if Tie
         if(game.getIsTie()){
