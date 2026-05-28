@@ -31,7 +31,7 @@ const gameboard = (() => {
 const gameController = (() => {
     const board = gameboard;
     let isTie = false;
-    let winningPlayer;
+    let winningPlayer = null;
     function createPlayer(name, symbol) {
 
         return {name, symbol}
@@ -55,6 +55,7 @@ const gameController = (() => {
         board.newBoard();
         pickRandomPlayer(p1, p2);
         isTie = false;
+        winningPlayer = null;
     }
     // check for endgame conditions: tie or winner
     function checkForGameOver(){
