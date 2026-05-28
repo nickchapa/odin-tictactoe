@@ -31,6 +31,7 @@ const gameboard = (() => {
 const gameController = (() => {
     const board = gameboard;
     let isTie = false;
+    let winningPlayer;
     function createPlayer(name, symbol) {
 
         return {name, symbol}
@@ -74,9 +75,8 @@ const gameController = (() => {
                     if(row.includes(null)) continue;
                     if(row[0] == row[1] && row[1] == row[2]){
                         console.log(`found three in a row in row ${index}`);
-                        if(row[0] == p1.symbol) console.log('p1 wins');
-                        else if(row[0] == p2.symbol) console.log('p2 wins');
-                        return true;
+                        if(row[0] == p1.symbol) return p1;
+                        else if(row[0] == p2.symbol) return p2;
                     }
                 }
             }
@@ -101,9 +101,8 @@ const gameController = (() => {
                     }
                     if(columnEquality == true){
                         console.log(`three in a row in column ${column}`);
-                        if(prev == p1.symbol) console.log('p1 wins');
-                        else if (prev == p2.symbol) console.log('p2 wins');
-                        return true;
+                        if(prev == p1.symbol) return p1;
+                        else if (prev == p2.symbol) return p2;
                     };
 
                     columnEquality = false;
@@ -115,25 +114,27 @@ const gameController = (() => {
                     gameboardArr[0][0] == gameboardArr[1][1] &&
                     gameboardArr[1][1] == gameboardArr[2][2]
                 ){
-                    if(gameboardArr[1][1] == p1.symbol) console.log(`p1 wins`);
-                    else console.log(`p2 wins`);
+                    if(gameboardArr[1][1] == p1.symbol) return p1;
+                    else return p2;
                     console.log(`top-left to bottom-right diagonal win`);
-                    return true;
                 }
                 if(gameboardArr[0][2] != null &&
                     gameboardArr[0][2] == gameboardArr[1][1] &&
                     gameboardArr[1][1] == gameboardArr[2][0]
                 ){
-                    if(gameboardArr[1][1] == p1.symbol) console.log(`p1 wins`);
-                    else console.log(`p2 wins`);
+                    if(gameboardArr[1][1] == p1.symbol) return p1;
+                    else return p2;
                     console.log(`top-right to bottom-left diagonal win`);
-                    return true;
                 }
             }
 
-            if(rowCheck()) return;
-            if(columnCheck()) return;
-            if(diagonalCheck()) return;
+            const rowWin = rowCheck();
+            const columnWin = columnCheck();
+            const diagonalWin = diagonalCheck();
+
+            if(rowWin) winningPlayer = rowWin;
+            else if(columnWin) winningPlayer = columnWin;
+            else if(diagonalWin) winningPlayer = diagonalWin;
 
             // columns
 
@@ -172,6 +173,7 @@ const gameController = (() => {
     }
 
     const getIsTie = () => isTie;
+    const getWinner = () => winningPlayer;
 
     return {
         startGame,
@@ -180,6 +182,7 @@ const gameController = (() => {
         round,
         getBoard: board.getBoard,
         getIsTie,
+        getWinner,
     }
 })
 
