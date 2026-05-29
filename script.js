@@ -251,7 +251,11 @@ const gameDisplay = (() => {
     })
 
     function clickEventHandler(e){
-        if(game.getBoard().length == []) return;
+        if(!e.target.dataset.row || !e.target.dataset.column){
+            console.log('invalid click');
+            return;
+        }
+
         const btnClicked = e.target;
         const cellRow = btnClicked.dataset.row;
         const cellColumn = btnClicked.dataset.column;
