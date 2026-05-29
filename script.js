@@ -260,6 +260,7 @@ const gameDisplay = (() => {
     })
 
     function clickEventHandler(e){
+        if(game.getWinner() !== null) return;
         if(!e.target.dataset.row || !e.target.dataset.column){
             console.log('invalid click');
             return;
