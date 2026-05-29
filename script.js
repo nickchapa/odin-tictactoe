@@ -230,7 +230,16 @@ const gameDisplay = (() => {
     function displayGameOver(){
         // create div that displays result
         // if Winner
-        if(game.getWinner()) console.log(game.getWinner().name);
+        const winner = game.getWinner();
+
+        if(winner){
+            console.log(winner.name);
+            // create DOM winner display here
+            const body = document.querySelector('body');
+            const resultDiv = document.createElement('div');
+            resultDiv.textContent = `Winner: ${winner.name}, ${winner.symbol}`;
+            body.append(resultDiv);
+        }
 
         // if Tie
         if(game.getIsTie()){
