@@ -194,6 +194,7 @@ const gameDisplay = (() => {
     const gameInfoDiv = document.querySelector('#game-info');
     const boardDiv = document.querySelector('#gameboard');
     const currentPlayerDiv = document.createElement('div');
+    const resultDiv = document.querySelector('#results');
 
     function displayBoard(){
         const createDisplayCells = (rowIndex, columnIndex, cell) => {
@@ -236,7 +237,6 @@ const gameDisplay = (() => {
             console.log(winner.name);
             // create DOM winner display here
             const body = document.querySelector('body');
-            const resultDiv = document.createElement('div');
             resultDiv.textContent = `Winner: ${winner.name}, ${winner.symbol}`;
             body.append(resultDiv);
         }
@@ -245,7 +245,6 @@ const gameDisplay = (() => {
         if(game.getIsTie()){
             console.log('game tied');
             const body = document.querySelector('body');
-            const resultDiv = document.createElement('div');
             resultDiv.textContent = 'game tied';
             body.append(resultDiv);
         }
@@ -254,6 +253,7 @@ const gameDisplay = (() => {
     startBtn.addEventListener("click", () => {
         gameInfoDiv.textContent = '';
         boardDiv.textContent = '';
+        resultDiv.textContent = '';
         game.startGame();
         displayBoard();
         displayPlayers();
