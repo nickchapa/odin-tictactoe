@@ -50,6 +50,11 @@ const gameController = (() => {
         else currentPlayer = player2;
     }
 
+    function setNames(p1name, p2name){
+        p1.name = p1name;
+        p2.name = p2name;
+    }
+
     const getCurrentPlayer = () => currentPlayer;
     const startGame = () => {
         board.newBoard();
@@ -178,6 +183,7 @@ const gameController = (() => {
         getBoard: board.getBoard,
         getIsTie,
         getWinner,
+        setNames,
     }
 })
 
@@ -189,6 +195,8 @@ const gameDisplay = (() => {
     const boardDiv = document.querySelector('#gameboard');
     const currentPlayerDiv = document.createElement('div');
     const resultDiv = document.querySelector('#results');
+    const p1NameInput = document.querySelector('#p1-name');
+    const p2NameInput = document.querySelector('#p2-name');
 
     function displayBoard(){
         const createDisplayCells = (rowIndex, columnIndex, cell) => {
@@ -249,6 +257,7 @@ const gameDisplay = (() => {
         boardDiv.textContent = '';
         resultDiv.textContent = '';
         game.startGame();
+        game.setNames(p1NameInput.value, p2NameInput.value);
         displayBoard();
         displayPlayers();
     })
