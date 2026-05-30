@@ -130,17 +130,11 @@ const gameController = (() => {
             }
 
             const rowWin = rowCheck();
+            if(rowWin) return rowWin;
             const columnWin = columnCheck();
+            if(columnWin) return columnWin;
             const diagonalWin = diagonalCheck();
-
-            if(rowWin) winningPlayer = rowWin;
-            else if(columnWin) winningPlayer = columnWin;
-            else if(diagonalWin) winningPlayer = diagonalWin;
-
-            // columns
-
-            //diagonal
-
+            if(diagonalWin) return diagonalWin;
         }
 
         function checkForTie(){
@@ -156,8 +150,8 @@ const gameController = (() => {
         // problem: if winner found, need to exit checkForGameOver
         // otherwise, checkForTie() will run
         // maybe if checkForWinner returns false, then run checkForTie
-        checkForWinner();
-        checkForTie();
+        winningPlayer = checkForWinner();
+        if(!winningPlayer) checkForTie();
     }
 
     function switchPlayer(player){
