@@ -199,16 +199,14 @@ const gameDisplay = (() => {
     const p2NameInput = document.querySelector('#p2-name');
 
     function displayBoard(){
-        const createDisplayCells = (rowIndex, columnIndex, cell) => {
+        gameboard.loopThroughBoard((rowIndex, columnIndex, cell) => {
             const cellButton = document.createElement('button');
             cellButton.dataset.row = rowIndex;
             cellButton.dataset.column = columnIndex;
             if(cell === null) cellButton.textContent = '-';
             else cellButton.textContent = cell;
             boardDiv.append(cellButton);
-        }
-
-        gameboard.loopThroughBoard(createDisplayCells);
+        })
     }
 
     function displayPlayers(){
