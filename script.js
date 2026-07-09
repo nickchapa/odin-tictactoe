@@ -185,10 +185,10 @@ const gameController = (() => {
         getWinner,
         setNames,
     }
-})
+})()
 
 const gameDisplay = (() => {
-    const game = gameController();
+    const game = gameController;
     const startBtn = document.querySelector('#start-btn');
     const cellNodeList = document.querySelectorAll('.cell');
     const gameInfoDiv = document.querySelector('#game-info');
