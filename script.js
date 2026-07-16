@@ -31,6 +31,7 @@ const gameboard = (() => {
 const gameController = (() => {
     const board = gameboard;
     let isTie = false;
+    let isCpuPlayer = false;
     let winningPlayer = null;
     function createPlayer(name, symbol) {
 
@@ -61,6 +62,8 @@ const gameController = (() => {
         pickRandomPlayer(p1, p2);
         isTie = false;
         winningPlayer = null;
+        isCpuPlayer = false;
+        if(p2.name == '') isCpuPlayer = true;
     }
     // check for endgame conditions: tie or winner
     function checkForGameOver(){
@@ -170,10 +173,41 @@ const gameController = (() => {
         boardArr[row][column] = currentPlayer.symbol;
         switchPlayer(currentPlayer);
         checkForGameOver();
+        console.log(`getIsGameOver: ${getIsGameOver()}`);
+    }
+
+    const cpuTurn = () => {
+        if(!isCpuPlayer || getIsGameOver()) return;
+
+        console.log('cpu turn');
+        // pick random available cell
+        const boardArr = board.getBoard();
+        const availableCells = [];
+        for(i = 0; i < boardArr.length; i++){
+            //console.log(boardArr[i]);
+            for(j = 0; j < boardArr[i].length; j++){
+                if(!boardArr[i][j]){
+                    availableCells.push({rowIndex: i, columnIndex: j});
+                }
+            }
+        }
+
+        // pick random cell
+        let randNum = Math.floor(Math.random() * (availableCells.length -1 - 0 + 1)) + 0;
+
+        // find way to pick random cell
+        // then find way to pick only from available cells
+
+        boardArr[availableCells[randNum].rowIndex][ availableCells[randNum].columnIndex] = currentPlayer.symbol;
+        console.log(boardArr);
+        switchPlayer(currentPlayer);
+        checkForGameOver();
     }
 
     const getIsTie = () => isTie;
+    const getIsCpuPlayer = () => isCpuPlayer;
     const getWinner = () => winningPlayer;
+    const getIsGameOver = () => getIsTie() || getWinner() ? true : false;
 
     return {
         startGame,
@@ -182,8 +216,10 @@ const gameController = (() => {
         round,
         getBoard: board.getBoard,
         getIsTie,
+        getIsCpuPlayer,
         getWinner,
         setNames,
+        cpuTurn,
     }
 })()
 
@@ -254,8 +290,13 @@ const gameDisplay = (() => {
         gameInfoDiv.textContent = '';
         boardDiv.textContent = '';
         resultDiv.textContent = '';
-        game.startGame();
         game.setNames(p1NameInput.value, p2NameInput.value);
+        game.startGame();
+
+        if(game.getCurrentPlayer() == game.getPlayers()[1]){
+            game.cpuTurn();
+        }
+
         displayBoard();
         displayPlayers();
     })
@@ -274,9 +315,15 @@ const gameDisplay = (() => {
         boardDiv.textContent = '';
 
         game.round(cellRow, cellColumn);
+        game.cpuTurn();
         displayBoard();
         displayPlayers();
         displayGameOver();
+
+        // if no winner and no tie
+        // run cpuTurn() from gameController
+        // display everything
+        
     }
 
     boardDiv.addEventListener('click', clickEventHandler);
