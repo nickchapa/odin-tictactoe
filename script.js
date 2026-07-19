@@ -169,11 +169,12 @@ const gameController = (() => {
     
     const round = (row, column) => {
         const boardArr = board.getBoard();
-        if(boardArr[row][column]) return;
+        if(boardArr[row][column]) return false;
         boardArr[row][column] = currentPlayer.symbol;
         switchPlayer(currentPlayer);
         checkForGameOver();
         console.log(`getIsGameOver: ${getIsGameOver()}`);
+        return true;
     }
 
     const cpuTurn = () => {
@@ -314,8 +315,7 @@ const gameDisplay = (() => {
         gameInfoDiv.textContent = '';
         boardDiv.textContent = '';
 
-        game.round(cellRow, cellColumn);
-        game.cpuTurn();
+        if(game.round(cellRow, cellColumn)) game.cpuTurn();
         displayBoard();
         displayPlayers();
         displayGameOver();
